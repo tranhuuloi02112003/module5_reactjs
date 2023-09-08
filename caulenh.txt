@@ -1,0 +1,2 @@
+Tạo dự án:
+npx create-react-app my-app
