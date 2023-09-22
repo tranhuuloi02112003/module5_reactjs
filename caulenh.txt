@@ -1,2 +1,7 @@
 Tạo dự án:
 npx create-react-app my-app
+
+
+npm install formik --save
+hoặc
+ yarn add formik

@@ -3,20 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {ComponentTimer} from "./conponents/component-timer";
-import {Couter1} from "./conponents/Couter1";
-import {Couter2} from "./conponents/Couter2";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    // <React.StrictMode>
-    <>
-        {/*<App/>*/}
-        {/*<ComponentTimer/>*/}
-        <Couter1/>
-        <Couter2/>
-    </>
-    // </React.StrictMode>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
