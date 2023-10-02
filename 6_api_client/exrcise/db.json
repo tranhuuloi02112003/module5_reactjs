@@ -55,18 +55,18 @@
   ],
   "books": [
     {
-      "id": 1,
-      "title": "Anh văn",
-      "quantity": 10
+      "title": "Không diệt không sinh không sợ hãi",
+      "quantity": "9",
+      "id": 1
     },
     {
-      "id": 2,
-      "title": "Ngữ văn",
-      "quantity": 10
+      "title": "Tuổi trẻ đáng giá bao nhiêu",
+      "quantity": "7",
+      "id": 2
     },
     {
       "title": "Đắc nhân tâm",
-      "quantity": "3",
+      "quantity": "1",
       "id": 3
     }
   ]
