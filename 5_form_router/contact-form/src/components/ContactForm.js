@@ -20,65 +20,76 @@ export function ContactForm() {
                         .matches("^[A-Za-z0-9_.+-]+@[A-Za-z0-9]+\\.[a-zA-Z0-9-.]+$", "Email format is incorrect"),
                     phone: Yup.string().required("Phone not empty")
                 })}
-                onSubmit={async values => {
-                    console.log(values)
-                    toast("Add contact successfully!!!");
+                onSubmit={( values ,{setSubmitting})=> {
+                    setTimeout(()=>{
+                        console.log(values)
+                        setSubmitting(false)
+                        toast("Add contact successfully!!!");
+                    },1000)
                 }}>
+                {
+                    ({isSubmitting})=>(
+                        <div>
+                            <h1>Contact Form</h1>
+                            <Form>
+                                <div className="form-group row">
+                                    <label htmlFor="name" className="col-sm-2 col-form-label">Name</label>
+                                    <div className="col-sm-10">
+                                        <Field name="name" type="text" className="form-control" id="name"
+                                               placeholder="Name"/>
+                                    </div>
+                                    <ErrorMessage name="name" component="span" className="text-danger"/>
+                                </div>
+                                <div className="form-group row">
+                                    <label htmlFor="inputEmail" className="col-sm-2 col-form-label">Email</label>
+                                    <div className="col-sm-10">
+                                        <Field name="email" type="email" className="form-control" id="inputEmail"
+                                               placeholder="Email"/>
+                                    </div>
+                                    <ErrorMessage name="email" component="span" className="text-danger"/>
 
-                <div>
-                    <h1>Contact Form</h1>
-                    <Form>
-                        <div className="form-group row">
-                            <label htmlFor="name" className="col-sm-2 col-form-label">Name</label>
-                            <div className="col-sm-10">
-                                <Field name="name" type="text" className="form-control" id="name"
-                                       placeholder="Name"/>
-                            </div>
-                            <ErrorMessage name="name" component="span" className="text-danger"/>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="inputEmail" className="col-sm-2 col-form-label">Email</label>
-                            <div className="col-sm-10">
-                                <Field name="email" type="email" className="form-control" id="inputEmail"
-                                       placeholder="Email"/>
-                            </div>
-                            <ErrorMessage name="email" component="span" className="text-danger"/>
+                                </div>
+                                <div className="form-group row">
+                                    <label htmlFor="phone" className="col-sm-2 col-form-label">Phone</label>
+                                    <div className="col-sm-10">
+                                        <Field name="phone" type="text" className="form-control" id="phone"
+                                               placeholder="Phone"/>
+                                    </div>
+                                    <ErrorMessage name="phone" component="span" className="text-danger"/>
 
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="phone" className="col-sm-2 col-form-label">Phone</label>
-                            <div className="col-sm-10">
-                                <Field name="phone" type="text" className="form-control" id="phone"
-                                       placeholder="Phone"/>
-                            </div>
-                            <ErrorMessage name="phone" component="span" className="text-danger"/>
+                                </div>
+                                <div className="form-group row">
+                                    <label htmlFor="message" className="col-sm-2 col-form-label">Message</label>
+                                    <div className="col-sm-10">
+                                        <Field name="message" type="text" className="form-control" id="message"
+                                               placeholder="Message"/>
+                                    </div>
+                                </div>
 
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="message" className="col-sm-2 col-form-label">Message</label>
-                            <div className="col-sm-10">
-                                <Field name="message" type="text" className="form-control" id="message"
-                                       placeholder="Message"/>
-                            </div>
-                        </div>
+                                {isSubmitting?
+                                    <ColorRing
+                                        visible={true}
+                                        height="80"
+                                        width="80"
+                                        ariaLabel="blocks-loading"
+                                        wrapperStyle={{}}
+                                        wrapperClass="blocks-wrapper"
+                                        colors={['#100f0f', '#29ec0e', '#100f0f', '#29ec0e', '#849b87']}
+                                    />
+                                    :
+                                    <div className="form-group row">
+                                        <div className="col-sm-10">
+                                            <button type="submit" className="btn btn-primary">Sign in</button>
+                                        </div>
+                                    </div>
 
+                                }
 
-                        <div className="form-group row">
-                            <div className="col-sm-10">
-                                <button type="submit" className="btn btn-primary">Sign in</button>
-                            </div>
+                            </Form>
                         </div>
-                        <ColorRing
-                            visible={true}
-                            height="80"
-                            width="80"
-                            ariaLabel="blocks-loading"
-                            wrapperStyle={{}}
-                            wrapperClass="blocks-wrapper"
-                            colors={['#100f0f', '#29ec0e', '#100f0f', '#29ec0e', '#849b87']}
-                        />
-                    </Form>
-                </div>
+                    )
+                }
+
             </Formik>
             <ToastContainer/>
         </>
