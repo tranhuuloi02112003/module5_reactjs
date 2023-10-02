@@ -1,6 +1,7 @@
 import {Field, Form, Formik} from "formik";
 import * as BookService from "../../service/BookService";
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
 
 
@@ -19,6 +20,7 @@ export const CreateBook = () => {
                         alert(values.title)
                     }
                     create();
+                    toast("added")
                     navigate("/");
                 }}>
                 <div>

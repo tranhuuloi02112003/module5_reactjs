@@ -2,6 +2,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {Field, Form, Formik} from "formik";
 import * as BookService from "../../service/BookService";
 import {useEffect, useState} from "react";
+import {toast} from "react-toastify";
 
 export const UpdateBook = () => {
     let navigate = useNavigate();
@@ -19,19 +20,20 @@ export const UpdateBook = () => {
         setBook(result);
     }
 
-    return (
+    return book.title!==''? (
         <>
             <>
                 <Formik
                     initialValues={{
-                        title: "",
-                        quantity: ""
+                        title: book.title,
+                        quantity: book.quantity
                     }}
                     onSubmit={(values) => {
                         const update = async() => {
                             await BookService.updateBook(id,values);
                         }
                         update();
+                        toast("updated")
                         navigate("/");
 
                     }}>
@@ -40,12 +42,12 @@ export const UpdateBook = () => {
                             <div className="form-group">
                                 <label htmlFor="title">Title</label>
                                 <Field name='title' type="text" className="form-control" id="title"
-                                       placeholder="title" value={book.title} />
+                                       placeholder="title"  />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="">Quantity</label>
                                 <Field name='quantity' type="text" className="form-control" id="quantity"
-                                       placeholder="Quantity" value={book.quantity}/>
+                                       placeholder="Quantity" />
                             </div>
                             <div className="form-group">
                                 <button type="submit" className="btn btn-primary">Submit</button>
@@ -55,5 +57,5 @@ export const UpdateBook = () => {
                 </Formik>
             </>
         </>
-    )
+    ):""
 }
