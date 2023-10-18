@@ -43,7 +43,6 @@ export default function UserList() {
                         <td>{user.email}</td>
                         <td>{user.website}</td>
                         <td>
-                            {/*// onClick={() => handleDeleteUser(user.id)*/}
                             <button  onClick={() => remove(user.id)} >Delete</button>
                         </td>
                     </tr>
