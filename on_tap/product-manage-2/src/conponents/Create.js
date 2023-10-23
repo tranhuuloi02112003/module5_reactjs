@@ -1,26 +1,26 @@
-import * as ProductService from "../service/ProductService";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {useNavigate} from "react-router-dom";
 import * as Yup from "yup";
 import {toast} from "react-toastify";
 import {useEffect, useState} from "react";
 import * as CategoryService from "../service/CategoryService";
+import * as TypeService from "../service/TypeService";
 
-export const ProductCreate = () => {
+export const Create = () => {
     const navigate = useNavigate();
-    const [categoris, setCategoris] = useState([]);
+    const [categories, setCategories] = useState([]);
     useEffect(()=>{
-        findAllCategory();
+        findAll();
     },[]);
 
-    const findAllCategory = async () => {
-      const res=await CategoryService.findAllCategory();
-      setCategoris(res);
+    const findAll = async () => {
+      const res=await CategoryService.findAll();
+      setCategories(res);
     }
     return (
         <>
             <div className="container">
-                <h1>Create Product</h1>
+                <h1>Create</h1>
                 <Formik
                     initialValues={{
                         name: '',
@@ -30,14 +30,14 @@ export const ProductCreate = () => {
                         state:""
                     }}
                     validationSchema={Yup.object({
-                        name: Yup.string().required("Name not empty").matches("^KH\\d{2}$","Name phải có dịnh dạng KHxx"),
+                        name: Yup.string().required("Name not empty"),//.matches("^KH\\d{2}$","Name phải có dịnh dạng KHxx"),
                         // email: Yup.string().required("Email not empty")
                         //     .matches("^[A-Za-z0-9_.+-]+@[A-Za-z0-9]+\\.[a-zA-Z0-9-.]+$", "Email format is incorrect"),
                         quantity: Yup.number().typeError("Quantity must be a number").required("Phone not empty")
                     })}
                     onSubmit={(values) => {
                         const create = async () => {
-                            await ProductService.saveProduct(values);
+                            await TypeService.save(values);
                         }
                         create();
                         toast("added")
@@ -69,7 +69,7 @@ export const ProductCreate = () => {
                                     <Field type="radio" className="form-check-input" name="state" value="Đã bán"
                                            id="flexRadioDefault1" />
                                     <label className="form-check-label" htmlFor="flexRadioDefault1">
-                                        Đã bán&nbsp;&nbsp;
+                                        Đã bán &nbsp;&nbsp;
                                     </label>
                                 </div>
                                 <div className="form-check">
@@ -87,7 +87,7 @@ export const ProductCreate = () => {
                                 <Field name='categoryId' as="select" className="form-select form-select-sm" aria-label="Small select example"
                                 >
                                     {
-                                        categoris.map((item)=>(
+                                        categories.map((item)=>(
                                             <option value={(item.categoryId)}>{item.name}</option>
                                         ))
                                     }

@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const URL_API = "http://localhost:8080/products";
+const URL_API = " http://localhost:8080/products";
 
-export const findAllProduct = async () => {
+export const findAll = async () => {
     try {
         const result = await axios.get(URL_API);
         return result.data;
@@ -10,7 +10,7 @@ export const findAllProduct = async () => {
         console.log(e)
     }
 }
-export const saveProduct = async (item) => {
+export const save = async (item) => {
     try {
         const result = await axios.post(URL_API, item);
         return result.data;
@@ -18,7 +18,7 @@ export const saveProduct = async (item) => {
         console.log(e)
     }
 }
-export const findByIdProduct = async (id) => {
+export const findById = async (id) => {
     try {
         const result = await axios.get(URL_API + "/" + id)
         return result.data;
@@ -26,7 +26,7 @@ export const findByIdProduct = async (id) => {
         console.log(e)
     }
 }
-export const updateProduct = async (id, item) => {
+export const update = async (id, item) => {
     try {
         const result = await axios.put(URL_API + "/" + id, item)
         return result.data;
@@ -35,11 +35,9 @@ export const updateProduct = async (id, item) => {
     }
 }
 
-export const deleteProduct = async (id) => {
+export const deleteType = async (id) => {
     try {
-        const result = await axios.delete(URL_API + "/" + id).then(() => {
-        console.log('success!!')
-        })
+        const result = await axios.delete(URL_API + "/" + id)
         console.log(id);
         return result.data;
     } catch (e) {

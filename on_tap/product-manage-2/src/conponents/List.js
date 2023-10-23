@@ -1,16 +1,14 @@
 import {useEffect, useState} from "react";
-import * as ProductService from "../service/ProductService";
 import {NavLink} from "react-router-dom";
-import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Pagination from "react-js-pagination";
-import './productList.css';
 import {ModelDelete} from "./ModelDelete";
 import * as CategoryService from "../service/CategoryService";
+import * as TypeService from "../service/TypeService";
 
-export const ProductList = () => {
+export const List = () => {
     const [idDelete, setIdDelete] = useState(0);
-    const [products, setProducts] = useState([]);
+    const [types, setTypes] = useState([]);
     const [categories, setCategories] = useState([]);
     const [searchResults, setSearchResults] = useState([]);
     const [search, setSearch] = useState("");
@@ -28,7 +26,7 @@ export const ProductList = () => {
     };
     //?? Phân trang------------------------------
 
-    //Modal******************
+    // Modal******************
     const [isShowModalDelete, setIsShowModalDelete] = useState(false);
     const handleClose = () => {
         setIsShowModalDelete(false);
@@ -38,26 +36,27 @@ export const ProductList = () => {
     //??API=========================
     useEffect(() => {
         fetchAPI();
-    }, [isShowModalDelete])
+    }, [isShowModalDelete])//isShowModalDelete
 
     const fetchAPI = async () => {
         // eslint-disable-next-line no-use-before-define
-        const result = await ProductService.findAllProduct();
-        setProducts(result);
-        const resultCategory = await  CategoryService.findAllCategory();
+        const result = await TypeService.findAll();
+        setTypes(result);
+        const resultCategory = await  CategoryService.findAll();
         setCategories(resultCategory);
+
 
     }
     //??API=========================
 
     //Search!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     useEffect(() => {
-        if (products !== undefined) {
-            const results = products.filter((item) =>
+        if (types !== undefined) {
+            const results = types.filter((item) =>
                 item.name.toLowerCase().includes(search.toLowerCase()) || item.quantity.includes(search));
             setSearchResults(results);
         }
-    }, [search, products]);
+    }, [search, types]);
     //??Search!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     return (
@@ -65,7 +64,7 @@ export const ProductList = () => {
            <div className="container">
                <div className="d-flex justify-content-between">
                    <span><b>List product:</b></span>
-                   <NavLink to="/create" className="btn btn-success">Add new product</NavLink>
+                   <NavLink to="/create" className="btn btn-success">Add</NavLink>
                </div>
 
                <input type="text" className="form-control" placeholder="Search " value={search}
@@ -120,7 +119,7 @@ export const ProductList = () => {
                    itemClass="page-item"
                    linkClass="page-link"
                />
-               <ToastContainer/>
+               {/*<ToastContainer/>*/}
            </div>
             <ModelDelete
                 show={isShowModalDelete}
