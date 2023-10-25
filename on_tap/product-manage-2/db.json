@@ -1,11 +1,11 @@
 {
   "products": [
     {
-      "name": "KH00",
-      "quantity": "5",
-      "date": "2023-10-17",
+      "name": "KH11",
+      "quantity": "51",
+      "date": "2023-10-01",
       "state": "Chưa bán",
-      "categoryId": "LG",
+      "categoryId": 1,
       "id": 1
     }
   ],
