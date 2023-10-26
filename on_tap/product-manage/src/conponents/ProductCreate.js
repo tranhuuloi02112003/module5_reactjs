@@ -30,17 +30,17 @@ export const ProductCreate = () => {
                         state:""
                     }}
                     validationSchema={Yup.object({
-                        name: Yup.string().required("Name not empty").matches("^KH\\d{2}$","Name phải có dịnh dạng KHxx"),
+                        name: Yup.string().required("Name not empty").matches("^KH\\d{2}$","Tên phải có dịnh dạng KHxx"),
                         // email: Yup.string().required("Email not empty")
                         //     .matches("^[A-Za-z0-9_.+-]+@[A-Za-z0-9]+\\.[a-zA-Z0-9-.]+$", "Email format is incorrect"),
-                        quantity: Yup.number().typeError("Quantity must be a number").required("Phone not empty")
+                        quantity: Yup.number().typeError("Quantity must be a number").required("Quantity not empty")
                     })}
                     onSubmit={(values) => {
                         const create = async () => {
                             await ProductService.saveProduct(values);
                         }
                         create();
-                        toast("added")
+                        toast("Thêm mới thanh công")
                         navigate("/");
                     }}>
                     <div>

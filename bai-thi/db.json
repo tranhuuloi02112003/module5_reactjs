@@ -1,0 +1,68 @@
+{
+  "products": [
+    {
+      "name": "KH11",
+      "quantity": "51",
+      "date": "2023-10-01",
+      "state": "Chưa bán",
+      "categoryId": 1,
+      "id": 1
+    },
+    {
+      "name": "Nokia 11111",
+      "quantity": "1",
+      "date": "2023-10-26",
+      "categoryId": "2",
+      "state": "Chưa bán",
+      "id": 6
+    },
+    {
+      "name": "Nokia 11111",
+      "quantity": "1",
+      "date": "2023-10-01",
+      "categoryId": "2",
+      "state": "Đã bán",
+      "id": 7
+    },
+    {
+      "name": "Nokia 11111",
+      "quantity": "1",
+      "date": "2023-10-13",
+      "categoryId": "3",
+      "state": "Chưa bán",
+      "id": 8
+    },
+    {
+      "name": "KH05",
+      "quantity": "5",
+      "date": "2023-10-13",
+      "categoryId": 1,
+      "state": "Đã bán",
+      "id": 9
+    },
+    {
+      "name": "Samsum s8",
+      "quantity": "5",
+      "date": "2023-10-20",
+      "categoryId": "3",
+      "state": "Đã bán",
+      "id": 10
+    }
+  ],
+  "categories": [
+    {
+      "description": "New",
+      "name": "IPhone5",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Samsung",
+      "description": "New"
+    },
+    {
+      "id": 3,
+      "name": "LG"
+    }
+  ]
+}

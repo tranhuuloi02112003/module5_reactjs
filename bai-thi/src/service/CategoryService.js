@@ -18,15 +18,5 @@ export const findById = async (id) => {
         console.log(e)
     }
 }
-export const findByName = async (name) => {
-    try {
-        const result = await axios.get(URL_API + "?name=" + name)
-        console.log(result)
-        return result.data;
-    } catch (e) {
-        console.log(e)
-    }
-}
-
 
 

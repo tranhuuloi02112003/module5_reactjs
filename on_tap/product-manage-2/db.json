@@ -1,26 +1,46 @@
 {
   "products": [
     {
-      "name": "KH11",
-      "quantity": "51",
-      "date": "2023-10-01",
-      "state": "Chưa bán",
-      "categoryId": 1,
-      "id": 1
+      "MaSP": "PROD-0002",
+      "name": "Iphone 14",
+      "categoryId": "2",
+      "price": "123",
+      "quantity": "123",
+      "date": "10/10/2023",
+      "description": "12",
+      "id": 5
+    },
+    {
+      "MaSP": "PROD-0001",
+      "name": "ABC",
+      "categoryId": "2",
+      "price": 560000,
+      "quantity": 1,
+      "date": "10/10/2023",
+      "description": "New",
+      "id": 6
+    },
+    {
+      "MaSP": "PROD-0002",
+      "name": "Iphone 14",
+      "categoryId": "2",
+      "price": 12,
+      "quantity": 11,
+      "date": "24/10/2023",
+      "description": "OKOK",
+      "id": 7
     }
   ],
   "categories": [
     {
       "name": "IPhone5",
-      "id": 1
+      "id": 1,
+      "description": "Đang nhập"
     },
     {
       "id": 2,
-      "name": "Samsung"
-    },
-    {
-      "id": 3,
-      "name": "LG"
+      "name": "Samsung",
+      "description": "Đang bán"
     }
   ]
 }
