@@ -11,7 +11,7 @@ export const List = () => {
     const [categories, setCategories] = useState([]);
     const [searchResults, setSearchResults] = useState([]);
     const [inputSeachName, setInputSeachName] = useState("");
-    // const [inputSeachCategory, setInputSeachCategory] = useState("");
+    const [inputSeachCategory, setInputSeachCategory] = useState("");
     let display = true;
 
 
@@ -31,13 +31,16 @@ export const List = () => {
 
 
     useEffect(() => {
-        if (types !== undefined) {
-            const results = types.filter((item) =>
-                item.name.toLowerCase().includes(inputSeachName.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name));
-            setSearchResults(results);
-
+        let filtered = types;
+        if (inputSeachCategory !== "") {
+            filtered = filtered.filter((product) => product.categoryId.toString() === inputSeachCategory)
         }
-    }, [inputSeachName, types]);
+        if (inputSeachName !== "") {
+            filtered = filtered.filter((product) => product.name.toLowerCase().includes(inputSeachName.toLowerCase()))
+        }
+        setSearchResults(filtered)
+
+    }, [inputSeachName, inputSeachCategory, types]);
 
     return (
         <>
@@ -47,8 +50,23 @@ export const List = () => {
                     <NavLink to="/create" className="btn btn-success">Add</NavLink>
                 </div>
 
-                <input type="text" className="form-control" placeholder="Tim theo tên sp " value={inputSeachName}
-                       onChange={(e) => setInputSeachName(e.target.value)}/>
+               <div className="d-flex justify-content-between">
+                   <input type="text" className="form-control" placeholder="Tim theo tên sp " value={inputSeachName}
+                          onChange={(e) => setInputSeachName(e.target.value)}/>
+                   <select
+                       id="categories"
+                       className="form-select form-select-sm"
+                       aria-label="Small select example"
+                       value={inputSeachCategory}
+                       onChange={(e) => setInputSeachCategory(e.target.value)}
+                   >
+                       <option value="">Chọn loại muốn tìm kiếm</option>
+                       {categories.map((category) =>(
+                           <option key={category.id} value={category.id.toString()}>{category.name}</option>
+                       ))}
+                   </select>
+
+               </div>
 
                 <table className="table">
                     <thead>
